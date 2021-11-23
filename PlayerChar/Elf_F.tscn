@@ -1,0 +1,54 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://frames/elf_f_run_anim_f2.png" type="Texture" id=1]
+[ext_resource path="res://PlayerChar/Elf_F.gd" type="Script" id=2]
+[ext_resource path="res://frames/elf_f_run_anim_f3.png" type="Texture" id=3]
+[ext_resource path="res://frames/elf_f_idle_anim_f0.png" type="Texture" id=4]
+[ext_resource path="res://frames/elf_f_idle_anim_f2.png" type="Texture" id=5]
+[ext_resource path="res://frames/elf_f_run_anim_f1.png" type="Texture" id=6]
+[ext_resource path="res://frames/elf_f_idle_anim_f1.png" type="Texture" id=7]
+[ext_resource path="res://frames/elf_f_idle_anim_f3.png" type="Texture" id=8]
+[ext_resource path="res://frames/elf_f_run_anim_f0.png" type="Texture" id=9]
+[ext_resource path="res://frames/elf_f_hit_anim_f0.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "hit",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 3.0
+height = 6.0
+
+[node name="Elf_F" type="KinematicBody2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -11 )
+frames = SubResource( 1 )
+animation = "idle"
+speed_scale = 1.2
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
